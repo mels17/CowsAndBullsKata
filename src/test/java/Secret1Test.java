@@ -7,6 +7,7 @@ public class Secret1Test {
 
     @Test
     public void secretWithSameNumberAreEqual() throws Exception {
+        System.out.print("ABD");
         Secret3 s1 = new Secret3(1234);
         Secret3 s2 = new Secret3(1234);
         assertEquals(s1, s2);
