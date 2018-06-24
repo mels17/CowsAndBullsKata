@@ -1,4 +1,6 @@
 .idea/
 .gradle/
 out/
-*.iml
+CowsAndBulls.iml
+*.imlgtifmd,sf
+.vscode/
