@@ -8,7 +8,18 @@ public class Game {
     }
 
     private Result compare(Secret secret, Secret guess) {
-        return new Result();
+        int bulls = 0;
+        int cows = 0;
+        for(int i = 0; i < 4; i++) {
+            char guessChar = guess.getSecretValue().charAt(i);
+            if(guessChar == secret.getSecretValue().charAt(i)) {
+                bulls++;
+            } else if(secret.getSecretValue().contains(Character.toString(guessChar))) {
+                int count = (int)secret.getSecretValue().chars().filter(num -> num == guessChar).count();
+                cows += count;
+            }
+        }
+        return new Result(cows, bulls);
     }
 
     private Secret getGuess() {
