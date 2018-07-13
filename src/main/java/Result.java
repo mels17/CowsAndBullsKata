@@ -1,17 +1,25 @@
+import java.util.Objects;
+
 public class Result {
-    private int cows;
-    private int bulls;
+    final int cows;
+    final int bulls;
 
     public Result(int cows, int bulls) {
         this.cows = cows;
         this.bulls = bulls;
     }
 
-    public int getCows() {
-        return cows;
+    @Override
+    public boolean equals(Object o) {
+        if (o != null && o instanceof Result) {
+            return (((Result) o).cows == this.cows
+                    && ((Result) o).bulls == this.bulls);
+        }
+        return false;
     }
 
-    public int getBulls() {
-        return bulls;
+    @Override
+    public String toString() {
+        return String.format("[c:%d , b:%d]", cows, bulls);
     }
 }

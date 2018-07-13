@@ -2,21 +2,24 @@ import java.util.Objects;
 
 public class Secret {
 
-    private String secretValue;
+    final String secretValue;
 
     public Secret(String s) {
         secretValue = s;
     }
 
-    public String getSecretValue() {
-        return secretValue;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o != null && o instanceof Secret) {
-            return ((Secret) o).getSecretValue().equals(this.secretValue);
+            return ((Secret) o).secretValue.equals(this.secretValue);
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Secret{" +
+                "secretValue='" + secretValue + '\'' +
+                '}';
     }
 }
