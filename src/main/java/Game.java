@@ -1,21 +1,39 @@
 public class Game {
 
-    public void start() {
-        System.out.println("Game started...");
-        Secret secret = getSecret();
-        System.out.println("Secret created:" + secret);
-        Result result = new Result(0, 0);
-         do {
-            Secret guess = getGuess();
-             System.out.println("Guess" + guess);
-            result = compare(secret, guess);
-             System.out.println("Result" + result);
-        } while (!gameOver(result));
+    private Reader reader;
+    private Writer writer;
+    public Game(Reader reader, Writer writer) {
+        this.reader = reader;
+        this.writer = writer;
     }
 
+    public void start() {
+        printWelcomeMessage();
+        Secret secret = getSecret();
+        Result result = new Result(0, 0);
+         do {
+             printWelcomeMessage();
+             Secret guess = getGuess();
+            result = compare(secret, guess);
+             printResult(result);
+         } while (!gameOver(result));
+    }
+
+    private void printWelcomeMessage() {
+        writer.write("Game started...");
+    }
+
+    private void printResult(Result result) {
+        writer.write("Result: " + result);
+    }
+
+    private void printGuessInputMessage() {
+        writer.write("Enter guess: ");
+    }
     private boolean gameOver(Result result) {
         return result.bulls == 4;
     }
+
 
 
     public Result compare(Secret secret, Secret guess) {
@@ -34,10 +52,11 @@ public class Game {
     }
 
     private Secret getGuess() {
-        return new Secret("1234");
+        printGuessInputMessage();
+        return new Secret(reader.read());
     }
 
     private Secret getSecret() {
-        return new Secret("1234");
+        return RandomSecretFactory.create();
     }
 }

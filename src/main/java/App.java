@@ -1,7 +1,10 @@
 public class App {
 
     public static void main(String... args) {
-        Game game = new Game();
+        Reader reader = new ConsoleReader();
+        Writer writer = new ConsoleWriter();
+
+        Game game = new Game(reader, writer);
         game.start();
     }
 }
