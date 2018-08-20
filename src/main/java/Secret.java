@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Secret {
 
     final String secretValue;

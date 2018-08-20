@@ -4,3 +4,4 @@ out/
 CowsAndBulls.iml
 *.imlgtifmd,sf
 .vscode/
+src/main/java/*.class
