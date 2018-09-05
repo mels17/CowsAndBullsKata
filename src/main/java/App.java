@@ -4,8 +4,8 @@ public class App {
         Reader reader = new ConsoleReader();
         Writer writer = new ConsoleWriter();
         SecretFactory secretFactory = new RandomNumberSecretFactory();
-
-        Game game = new Game(reader, writer, secretFactory);
+        Rules rules = new StandardRules();
+        Game game = new Game(reader, writer, secretFactory, rules);
         game.start();
     }
 }
